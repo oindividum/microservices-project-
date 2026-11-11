@@ -1,0 +1,32 @@
+asyncapi: '2.6.0'
+info:
+  title: Order & Payment Event Bus
+  version: 1.0.0
+  description: События, связанные с изменением статуса заказов и платежей
+channels:
+  order.paid:
+    publish:
+      summary: Событие генерируется при успешной оплате билета
+      message:
+        name: OrderPaidEvent
+        payload:
+          type: object
+          properties:
+            orderId:
+              type: string
+              example: "ord-777-888"
+            userId:
+              type: string
+              example: "user-uuid-1234"
+            seats:
+              type: array
+              items:
+                type: string
+                example: "sector-A-row-3-seat-12"
+            totalAmount:
+              type: number
+              example: 5500.00
+            paidAt:
+              type: string
+              format: date-time
+              example: "2026-11-11T18:32:15Z"
